@@ -293,22 +293,22 @@ class Analytics with ClientMethods {
   Future _checkInstalledVersion() async {
     final contextFuture = AnalyticsPlatform.instance
         .getContext(collectDeviceId: state.configuration.state.collectDeviceId);
-    log("CONTEXT FUTURE")
-    log(contextFuture)
+    log("CONTEXT FUTURE");
+    log(contextFuture);
     final previousContextFuture = state.context.state;
-    log("PREVIUS CONTEXT FUTURE")
-    log(previousContextFuture)
+    log("PREVIUS CONTEXT FUTURE");
+    log(previousContextFuture);
     final userInfo = state.userInfo.state;
 
     final contexts =
         await Future.wait([contextFuture, previousContextFuture, userInfo]);
-    log("ARRAY CONTEXTS")
-    log(contexts)
+    log("ARRAY CONTEXTS");
+    log(contexts);
     final context = Context.fromNative(contexts[0] as NativeContext,
         (contexts[2] as UserInfo).userTraits ?? UserTraits());
     final previousContext = contexts[1] as Context?;
-    log("PREVIOUS CONTEXT")
-    log(previousContext)
+    log("PREVIOUS CONTEXT");
+    log(previousContext);
 
     state.context.setState(previousContext == null
         ? context
